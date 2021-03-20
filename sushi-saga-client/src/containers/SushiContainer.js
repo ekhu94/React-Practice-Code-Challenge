@@ -1,26 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Sushi from '../components/Sushi';
 import MoreButton from '../components/MoreButton';
 
-const SushiContainer = ({ sushis }) => {
-  const [sushiIdx, setSushiIdx] = useState(0);
-
-  const onMoreClick = () => {
-    setSushiIdx(sushiIdx + 4);
-  };
-
-  const getNextSushis = () => {
-    return renderedSushis.slice(sushiIdx, sushiIdx + 4)
-  };
+const SushiContainer = ({ sushis, onMoreClick, onSushiClick }) => {
 
   const renderedSushis = sushis.map(s => {
-    return <Sushi key={s.id} sushi={s} />
+    return <Sushi key={s.id} sushi={s} onSushiClick={onSushiClick} />
   });
 
   return (
     <React.Fragment>
       <div className="belt">
-        {getNextSushis()}
+        {renderedSushis}
         <MoreButton onMoreClick={onMoreClick} />
       </div>
     </React.Fragment>
