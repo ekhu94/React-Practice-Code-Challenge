@@ -8,11 +8,9 @@ const API = "http://localhost:3000/sushis"
 
 const App = () => {
   const [sushis, setSushis] = useState([]);
-  const [money, setMoney] = useState(300);
+  const [money, setMoney] = useState(200);
   const [sushiIdx, setSushiIdx] = useState(0);
   const [eatenSushi, setEatenSushi] = useState([]);
-
-  console.log(money)
 
   useEffect(() => {
     const getSushis = async () => {
@@ -39,6 +37,7 @@ const App = () => {
   return (
     <div className="app">
       <SushiContainer
+        money={money}
         sushis={getNextSushis()}
         onMoreClick={onMoreClick}
         onSushiClick={onSushiClick}

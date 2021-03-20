@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 
-const Sushi = ({ sushi, onSushiClick }) => {
+const Sushi = ({ sushi, money, onSushiClick }) => {
   const [eaten, setEaten] = useState(false);
   const {name, img_url, price} = sushi;
 
   const onPlateClick = () => {
-    if (!eaten) {
+    if (!eaten && money-price >= 0) {
       setEaten(true);
       onSushiClick(sushi.id);
+    } else {
+      alert('もう帰ってください。お金がないだろう！')
     }
   };
 

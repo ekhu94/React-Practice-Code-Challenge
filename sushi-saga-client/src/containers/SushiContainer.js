@@ -2,10 +2,15 @@ import React from 'react'
 import Sushi from '../components/Sushi';
 import MoreButton from '../components/MoreButton';
 
-const SushiContainer = ({ sushis, onMoreClick, onSushiClick }) => {
+const SushiContainer = ({ sushis, money, onMoreClick, onSushiClick }) => {
 
   const renderedSushis = sushis.map(s => {
-    return <Sushi key={s.id} sushi={s} onSushiClick={onSushiClick} />
+    return <Sushi 
+            key={s.id}
+            sushi={s}
+            money={money}
+            onSushiClick={onSushiClick}
+          />
   });
 
   return (
