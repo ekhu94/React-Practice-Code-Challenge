@@ -1,20 +1,28 @@
-import React, { Component } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import SushiContainer from './containers/SushiContainer';
 import Table from './containers/Table';
 
 // Endpoint!
 const API = "http://localhost:3000/sushis"
 
-class App extends Component {
+const App = () => {
+  const [sushis, setSushis] = useState([]);
 
-  render() {
-    return (
-      <div className="app">
-        <SushiContainer />
-        <Table />
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    const getSushis = async () => {
+      const res = await axios.get(API);
+      setSushis(res.data);
+    };
+    getSushis();
+  }, []);
+
+  return (
+    <div className="app">
+      <SushiContainer sushis={sushis} />
+      <Table />
+    </div>
+  );
+};
 
 export default App;
