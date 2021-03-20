@@ -12,7 +12,7 @@ const App = () => {
   const [sushiIdx, setSushiIdx] = useState(0);
   const [eatenSushi, setEatenSushi] = useState([]);
 
-  console.log(eatenSushi)
+  console.log(money)
 
   useEffect(() => {
     const getSushis = async () => {
@@ -28,6 +28,7 @@ const App = () => {
 
   const onSushiClick = id => {
     const ateSushi = sushis.find(s => s.id === id);
+    setMoney(money - ateSushi.price)
     setEatenSushi([...eatenSushi, ateSushi]);
   }
 

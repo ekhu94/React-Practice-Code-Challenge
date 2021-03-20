@@ -5,8 +5,10 @@ const Sushi = ({ sushi, onSushiClick }) => {
   const {name, img_url, price} = sushi;
 
   const onPlateClick = () => {
-    setEaten(!eaten);
-    onSushiClick(sushi.id);
+    if (!eaten) {
+      setEaten(true);
+      onSushiClick(sushi.id);
+    }
   };
 
   return (
